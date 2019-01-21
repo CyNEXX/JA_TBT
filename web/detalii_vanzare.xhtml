@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+      <!--     xmlns:my="http://java.sun.com/jsf/composite/custom"> -->
+
+
+    <ui:composition template="./templates/template_vanzare.xhtml">
+        <ui:param name = "button_type" value ="vanzari"/>
+        <ui:param name="element_de_adaugat" value="DETALII VANZARE"></ui:param>
+        <ui:param name = "content_type" value ="div_info"/>
+        <ui:param name = "browse_type" value ="produse"/>
+        <ui:param name = "Title" value = "TBT - Detalii vanzari"/>
+        <ui:param name = "editable" value = "isNotEditable"/>
+
+        <ui:define name="top_nav">
+            <ui:insert name="top" >
+                <ui:include src="components/top.xhtml" />
+            </ui:insert>
+        </ui:define>
+
+        <ui:define name="add_title">
+            <ui:insert name="title" >
+                <ui:include src="components/add_title.xhtml" />
+            </ui:insert>
+        </ui:define>
+
+        <ui:define name="info_table">
+            <ui:insert name="detalii_cl" >
+                <ui:include src="components/info_table.xhtml" />
+            </ui:insert>
+        </ui:define>
+
+        <ui:define name="lista_produse">
+            <div id="cosList">
+                <h:form id="form_cos" class="forms">
+
+
+
+                    <h:dataTable value="#{vanzariController.detalii}" var="item" class="tabledata" role="grid" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" columnClasses="tds_idprodus,tds_numeprodus,tds_descriereprodus,tds_stocdorit,tds_pretprodus outputs_pret_item,outputs_pret_total ">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="idProdus"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idProdus}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nume Produs"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numeProdus}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Descriere"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descriereProdus}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cantitate"/>
+                            </f:facet>
+                            <h:outputText class="outputs_stocdorit" value="#{item.cantitateTranz}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Pret Item"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pretProdus} RON"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Pret Total"/>
+                            </f:facet>
+                            <h:outputText value="#{item.totalProdus} RON"/>
+                        </h:column>
+
+
+                    </h:dataTable>
+
+                    <div id="blank_row"></div>
+
+                    <h:panelGroup layout="block" id="div_total_dc" class="divs_total_dc">
+                        <h:outputText id="output_total_text" value="Total:" class="outputs_total_text totals"/>
+                        <h:outputText id="output_total" value="" class="outputs_total totals"/>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" id="div_confirmare" class="div_conf">
+                        <h:panelGroup layout="block" class="forms_bottom_nav">
+                            <h:panelGroup layout="block" id="div_previous" class="div_bot_buttons div_button_bot_left">
+                                <h:commandButton id="anuleaza" action="${topController.getPaginaVanzari}" class="buttons_bot button_left" value="◄ INAPOI"></h:commandButton>
+                            </h:panelGroup>
+                            <h:panelGroup layout="block" id="div_next" class="div_bot_buttons div_button_bot_right">
+                                <h:commandButton id="accept" action="#{vanzariController.checkCos}" class="buttons_bot button_right" value="MERGI LA COS ►" rendered="false"/>
+                            </h:panelGroup>
+
+                        </h:panelGroup>
+                    </h:panelGroup>
+                </h:form>
+            </div>
+            <script type="text/javascript" src="./resources/js/common_add.js"></script>
+        </ui:define>
+
+
+    </ui:composition>
+
+</html>
+

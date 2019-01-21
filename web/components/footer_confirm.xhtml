@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+
+    <h:body>
+        <ui:composition>
+
+
+
+            <ui:composition>
+                <h:panelGroup layout="block" id="footer_confirm" class="div_conf">
+                    <h:form class="forms_bottom_nav">
+                        <h:panelGroup layout="block" id="div_previous" class="div_bot_buttons div_button_bot_left">
+                            <h:commandButton id = "anuleaza" action="${indexController.prepareList}" class="buttons_bot button_left" value="◄ ANULEAZA"> </h:commandButton>
+                        </h:panelGroup>
+
+                        <h:panelGroup layout="block" id="div_next" class="div_bot_buttons div_button_bot_right">
+
+                            <h:commandButton id = "accept" action="#{indexController.saveVanzare}" class="buttons_bot button_right" value="FINALIZARE ►"></h:commandButton>
+                        </h:panelGroup>
+                    </h:form>
+                </h:panelGroup>
+                
+            </ui:composition>
+
+
+        </ui:composition>
+
+    </h:body>
+
+</html>

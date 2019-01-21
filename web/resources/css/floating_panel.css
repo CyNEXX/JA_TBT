@@ -1,0 +1,177 @@
+#div_floater {
+    position: fixed;
+    width: 10em;
+    height: 10%;
+    right: 0;
+    padding: 3%;
+    bottom: 0;
+    float: right;
+}
+
+#div_panel_cauta {
+
+    height: auto;
+    width: 100%;
+    background: var(--lightcolor);
+    border-radius: 1em 1em 1em 1em;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+::placeholder {
+    font-style: italic;
+    color: var(--darkercolor);
+
+}
+
+
+
+#add_search_form\3a search {
+    border: none;
+    background: var(--fillcolor);
+    height: 2em;
+    color: var(--bkcolor);
+    text-align: center;
+    width: 100%;
+    border-radius: 1em 1em 0 0;
+    outline: none;
+}
+
+
+
+#add_search_form\3a div_panel_icons{
+    display: flex;
+    justify-content: space-between;
+    /*    margin-top: 0.2em;*/
+}
+
+
+#add_search_form\3a div_cauta {
+    width: 50%;
+    height: 4em;
+}
+
+#add_search_form\3a buton_submit {
+    background: url('../graphic/search_sq.svg');
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    border-radius: 0 0 0 2em;
+}
+
+#add_search_form\3a div_adauga {
+    width: 50%;
+    height: 4em;
+}
+
+/*#add_search_form\3a buton_adauga {
+    background: url('../graphic/add_sq.svg');
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    border-radius: 0 0 2em 0;
+}
+
+#add_search_form\3a buton_adauga:hover {
+    background: url('../graphic/add_sq_hover.svg');
+    background-position: center;
+    background-size: cover;
+}*/
+
+
+.fixed_icons.class_addbtns {
+    background: url('../graphic/add_sq.svg');
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    border-radius: 0 0 2em 0;
+}
+
+.fixed_icons.class_addbtns:hover {
+    background: url('../graphic/add_sq_hover.svg');
+    background-position: center;
+    background-size: cover;
+}
+
+#add_search_form\3a buton_submit:hover {
+    background: url('../graphic/search_sq_hover.svg');
+    background-position: center;
+    background-size: cover;
+}
+
+.search_box{outline:none;}
+
+.new_color {background: var(--bluishcolor);}
+
+
+
+.buttons_adauga_vanzare{
+    background: url('../graphic/add_sq.svg');
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    border-radius: 3em;
+}
+
+
+.buttons_adauga_vanzare:hover {
+    background: url('../graphic/add_sq_hover.svg');
+    background-position: center;
+    background-size: cover;
+}
+
+.class_div_fixed_icon_vanzari {
+    width: 4em;
+    height: 4em;
+}
+
+.div_search_box {
+    background: var(--fillcolor);
+    display: flex;
+    height: 3em;
+}
+
+.vanzari_clienti_search{
+    color: var(--unevenrowcolor);
+    background: var(--fillcolor);
+    text-align: center;
+    width: 90%;
+    margin: 0;
+    border: none;
+    outline: none;
+    padding: 0;
+    height: 3em;
+    border-radius: 0;
+    height: 100%;
+}
+
+.solo_search {
+    outline: none;
+    position: relative;
+    background: url('../graphic/search_sq_vanz.svg');
+    background-position: center;
+    background-size: cover;
+    border-radius: 0;
+    width: 10%;
+    height: 100%;
+    border: none;
+}
+
+.solo_search:hover {
+    background: url('../graphic/search_sq_vanz_hover.svg');
+    background-position: center;
+    background-size: cover;
+}

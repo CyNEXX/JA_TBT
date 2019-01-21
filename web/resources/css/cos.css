@@ -1,0 +1,119 @@
+.tabledata {
+    table-layout: fixed;
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+    margin: auto;
+    vertical-align: middle;
+
+    font-family: Arial;
+    font-weight: bold;
+}
+
+
+
+thead {
+/*    display:none;*/
+}
+
+
+td { 
+    padding: 0;
+    margin: 0;
+    width: 13.2%;
+    height: 2em;
+    overflow:hidden;
+    white-space: nowrap;
+}
+
+tr{ 
+    background: var(--lightcolor);
+    height: 2em;
+    color: var(--bkcolor);
+}
+
+tbody tr:hover { 
+    color: var(--fillcolor);
+    background: var(--unevenrowcolor);
+}
+
+.produse_edit_butns{
+    background-size: auto;
+    width: 20%;
+    border-radius: 0;
+}
+
+.produse_edit_butns:hover {
+    background: var(--fillcolor);
+    color: var(--bkcolor);
+}
+
+.produse_non_img_table_button {
+    font-family: Kartika;
+    color: var(--fillcolor);
+    background: var(--lightcolor);
+    height: 100%;
+    font-weight: bold;
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: 20%;
+}
+
+.produse_sterge_butns {
+    color: var(--redcolor);
+}
+
+.produse_sterge_butns:hover{
+    background: var(--redcolor);
+    color: var(--bkcolor);
+}
+
+.produse_non_img_table_button {
+    width: 100%;
+}
+
+
+.td_editareprodus {
+    width: 16%;
+}
+
+.td_stergeprodus {
+    width: 17%;
+}
+
+.td_idprodus {
+    width: 1%;
+}
+
+.inputs {outline: none;}
+
+.td_numeprodus {
+    white-space: nowrap;
+    overflow: hidden;
+    width: 20%;
+    text-align: left;
+}
+
+.td_descriereprodus {
+    width: 25%;
+    white-space: nowrap;
+    overflow: hidden;
+
+    text-align: left;
+}
+
+.td_stocprodus {
+    padding-right: 0.5em;
+    width: 8%;
+    text-align: end;
+}
+
+.td_pretprodus {
+    padding-right: 0.5em;
+    width: 11.5%;
+    text-align: end;
+}
+
+.td_produse_comandate {width: 0;}

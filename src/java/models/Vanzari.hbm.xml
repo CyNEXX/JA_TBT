@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 14, 2018 3:30:19 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="models.Vanzari" table="vanzari" catalog="tbtsimple" optimistic-lock="version">
+        <id name="idVanzare" type="java.lang.Integer">
+            <column name="id_vanzare" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="clienti" class="models.Clienti" fetch="select">
+            <column name="id_client" not-null="true" />
+        </many-to-one>
+        <many-to-one name="produse" class="models.Produse" fetch="select">
+            <column name="id_produs" not-null="true" />
+        </many-to-one>
+        <property name="idComanda" type="int">
+            <column name="id_comanda" not-null="true" />
+        </property>
+        <property name="cantitateVanzare" type="int">
+            <column name="cantitate_vanzare" not-null="true" />
+        </property>
+        <property name="pretProdus" type="double">
+            <column name="pret_produs" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="totalProdus" type="double">
+            <column name="total_produs" precision="22" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

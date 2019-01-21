@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+
+    <ui:composition template="./templates/template_vanzare.xhtml">
+        <ui:param name = "button_type" value ="vanzari"/>
+        <ui:param name="element_de_adaugat" value="CREARE VANZARE"></ui:param>
+        <ui:param name = "content_type" value ="div_info"/>
+        <ui:param name = "browse_type" value ="produse"/>
+        <ui:param name = "Title" value = "TBT - Creaza vanzare"/>
+
+
+
+
+
+        <ui:define name="top_nav">
+            <ui:insert name="top" >
+                <ui:include src="components/top.xhtml" />
+            </ui:insert>
+        </ui:define>
+
+        <ui:define name="add_title">
+            <ui:insert name="title" >
+                <ui:include src="components/add_title.xhtml" />
+            </ui:insert>
+        </ui:define>
+
+        <ui:define name="info_table">
+            <ui:insert name="detalii_cl" >
+                <ui:include src="components/info_table.xhtml" />
+            </ui:insert>
+        </ui:define>
+
+        <ui:define name="lista_produse">
+            <div id="mainList">
+
+                <h:form id="form_prev" class="forms_nav">
+                    <h:commandButton id="button_prev_prod" action="#{vanzariController.prodPrevA}" class="buttons_nav_side" value="◄" rendered="#{vanzariController.hasPreviousProdPageA}">
+                        <f:ajax execute = "button_prev_prod" render = "form_prev div_main_repeat form_next" />
+                    </h:commandButton>
+
+                </h:form>   
+
+                <h:panelGroup layout="block" id="div_main_repeat">
+                    <ui:repeat id="repeat" var="produs" value="#{vanzariController.listDM}" >
+                        <h:panelGroup layout="block" class="divs_items">
+                            <h:form id = "mini_form" class="forms_per_item">
+                                <h:panelGroup layout="block" class="divs_id">
+                                    <h:inputHidden id="hidden_input" value="#{produs.idProdus}" class="outputs_produse outputs_ID_PROD"></h:inputHidden>
+                                </h:panelGroup>
+                                <h:panelGroup layout="block" class="divs_nume div_minicontents">
+                                    <h:outputText value="#{produs.numeProdus}" class="outputs_produse outputs_NUME"></h:outputText>
+                                </h:panelGroup>
+                                <h:panelGroup layout="block" class="divs_stoc div_minicontents">
+                                    <h:outputText value="Stoc: #{produs.stocProdus} buc" class="outputs_produse outputs_STOC"></h:outputText>
+                                </h:panelGroup>
+                                <h:panelGroup layout="block" class="divs_pret div_minicontents">
+                                    <h:outputText value="Pret: #{produs.pret} RON" class="outputs_produse outputs_PRET"></h:outputText>
+                                </h:panelGroup>
+                                <h:commandButton id="adauga_la_cos" action="${vanzariController.adaugaLaCos}" class="buttons_add div_minicontents" value="ADAUGA">
+                                    <f:ajax execute = "mini_form" render = "mainList div_confirmare" />
+                                </h:commandButton>
+                            </h:form>
+                        </h:panelGroup>
+                    </ui:repeat>
+                </h:panelGroup>
+
+                <h:form id="form_next" class="forms_nav">
+                    <h:commandButton id="button_next_prod" action="#{vanzariController.prodNextA}" class="buttons_nav_side" value="►" rendered="${vanzariController.hasNextProdPageA}">
+                        <f:ajax execute = "button_next_prod" render = "form_prev div_main_repeat form_next" />
+                    </h:commandButton>
+                </h:form>
+
+            </div>
+
+            <div id="blank_row" class="small_row"></div>
+
+            <h:panelGroup layout="block" id="div_confirmare" class="div_conf">
+                <h:form class="forms_bottom_nav">
+                    <h:panelGroup layout="block" id="div_previous" class="div_bot_buttons div_button_bot_left">
+                        <h:commandButton id="anuleaza" action="${topController.getBackpage}" class="buttons_bot button_left" immediate="true" value="◄ ANULARE"></h:commandButton>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" id="div_next" class="div_bot_buttons div_button_bot_right">
+                        <h:commandButton id="accept" action="#{vanzariController.mergilacos}" class="buttons_bot button_right button_cos" value="MERGI LA COS ►" rendered="#{vanzariController.hasCos}"></h:commandButton>
+                    </h:panelGroup>
+                </h:form>
+            </h:panelGroup>                                     
+        </ui:define>
+
+
+<!--        <script type="text/javascript" src="./resources/js/common.js"></script>
+        <h:outputScript library="js" name="common.js" />-->
+
+<!--        <ui:define name="floating_info">
+            
+        </ui:define>-->
+
+    </ui:composition>
+
+</html>
+

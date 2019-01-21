@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/main.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/clienti.css" rel="stylesheet" type="text/css" />
+        <link href="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" rel="script" type="text/javascript" />
+        <link href="./resources/js/common.js" rel="script" type="text/javascript" />
+
+
+    </h:head>
+
+    <ui:composition template="./templates/template.xhtml">
+        <ui:param name = "button_type" value ="produse"/>
+        <ui:param name = "content_type" value ="div_content"/>
+        <ui:param name = "element_de_adaugat" value ="ADAUGA PRODUS"/>
+        <ui:param name = "browse_type" value ="form_main_produse"/>
+        <ui:param name = "Title" value ="TBT - Produse"/>
+
+        <ui:define name="fixed">
+            <ui:insert name="floater" >
+                <h:form id="add_search_form" class="forms_add">
+                    <h:inputHidden id="add_type" class="class_add_type" value="produse"/>
+                    <h:panelGroup layout="block" id="div_panel_cauta">
+                        <h:inputText id="search" value="#{produseController.search}" class="class_search"/>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" id="div_panel_icons">
+
+                        <h:panelGroup layout="block" id="div_cauta" class="class_div_fixed_icon">
+                            <!--                            <h:outputStylesheet name="/css/floating_panel.css"/>-->
+                            <h:commandButton id="buton_submit" action="#{produseController.displaySearch}" class="search_submit produse_search">
+                                <f:ajax render="div_replaceable footer div_no_results" execute="add_search_form" onevent="function doThis(data) {
+                                        if (data.status === 'success') {
+                                        var script = document.createElement('script');
+                                        script.setAttribute('type', 'text/javascript');
+                                        script.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+                                        document.head.appendChild(script);
+                                        var script2 = document.createElement('script2');
+                                        script.setAttribute('type', 'text/javascript');
+                                        script.setAttribute('src', 'common.js');
+                                        document.head.appendChild(script2);
+                                        mainFunction();
+                                        }
+                                        }
+                                        "/>
+                            </h:commandButton>
+                        </h:panelGroup>
+
+                        <h:panelGroup layout="block" id="div_adauga" class="class_div_fixed_icon">
+                            <h:commandButton id="buton_adauga" class="fixed_icons class_addbtns produse_add" action="#{produseController.adauga}"></h:commandButton>
+                        </h:panelGroup>
+                        <script type="text/javascript" src="./resources/js/common.js"></script>
+                        <h:outputStylesheet name="/css/floating_panel.css"/>
+                    </h:panelGroup>
+                </h:form>
+            </ui:insert>
+     <!--       <script type="text/javascript" src="./resources/js/common.js"></script> -->
+        </ui:define>
+
+        <ui:define name="top_nav">
+            <ui:insert name="top" >
+                <ui:include src="components/top.xhtml" />
+            </ui:insert>
+        </ui:define>
+
+        <ui:define name="content">
+            <h:outputStylesheet name="/css/produse.css"/>
+            <h:form id="form_main_produse" class="forms" rendered="#{produseController.hasResults}">
+                <h:dataTable value="#{produseController.produseTitles}" var="item" class="tabledata" role="grid" rowClasses="tr_produse_info" columnClasses="td_idprodus,td_produse_comandate,td_numeprodus,td_descriereprodus,td_stocprodus,td_pretprodus,td_editareprodus,td_stergeprodus,td_shadowerase">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="idProdus"/>
+                        </f:facet>
+                        <h:inputHidden value="#{item.idProdus}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Produse vandute"/>
+                        </f:facet>
+                        <h:inputHidden value="#{item.totalVandute}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nume"/>
+                        </f:facet>
+                        <h:outputText value="#{item.numeProdus}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Descriere"/>
+                        </f:facet>
+                        <h:outputText value="#{item.descriereProdus}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Stoc"/>
+                        </f:facet>
+                        <h:outputText value="#{item.stocProdus} buc"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Pret"/>
+                        </f:facet>
+                        <h:outputText value="#{item.pret} RON"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value=" "/>
+                        </f:facet>
+                        <h:commandButton value="EDITARE" action="${produseController.prepareView()}" class="p_mod produse_non_img_table_button produse_edit_butns produse_special_width"></h:commandButton>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value=" "/>
+                        </f:facet>
+                        <h:commandButton value="STERGE" id="stergeprod" class="produse_non_img_table_button produse_sterge_butns produse_special_width p_ers ">
+                            <f:ajax execute="stergeprod" render="div_replaceable footer floating_info" onevent="function doThis(data) {
+                                    if (data.status === 'success') {
+                                    var script = document.createElement('script');
+                                    script.setAttribute('type', 'text/javascript');
+                                    script.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+                                    document.head.appendChild(script);
+                                    var script2 = document.createElement('script2');
+                                    script2.setAttribute('type', 'text/javascript');
+                                    script2.setAttribute('src', 'common.js');
+                                    document.head.appendChild(script2);
+                                    mainFunction();
+                                    }
+                                    }
+                                    "/>
+                        </h:commandButton>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value=" "/>
+                        </f:facet>
+                        <h:commandButton class="buttons_hidden_erase" style="display: none" actionListener="${produseController.stergeProdus}">
+                        </h:commandButton>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </ui:define>
+
+        <ui:define name="bot">
+            <ui:insert name="bot_nav" >
+                <h:panelGroup layout="block" id="footer" class="div_conf">
+                    <h:form id="form_bottom_nav" class="forms_bottom_nav">
+
+                        <h:panelGroup layout="block" id="div_previous" class="div_bot_buttons div_button_bot_left">
+                            <h:commandButton id = "button_command_prev" action="#{produseController.prodPrev}" class="buttons_bot button_left noncos" value="◄ ANTERIOARELE #{produseController.pageSize}" rendered="#{produseController.hasPreviousPage}">
+                                <f:ajax execute = "button_command_prev" render = "div_replaceable footer floating_info" onevent="function doThis(data) {
+                                        if (data.status === 'success') {
+                                        var script = document.createElement('script');
+                                        script.setAttribute('type', 'text/javascript');
+                                        script.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+                                        document.head.appendChild(script);
+                                        var script2 = document.createElement('script2');
+                                        script2.setAttribute('type', 'text/javascript');
+                                        script2.setAttribute('src', 'common.js');
+                                        document.head.appendChild(script2);
+                                        mainFunction();
+                                        }
+                                        }
+                                        "/>
+                            </h:commandButton>
+                        </h:panelGroup>
+
+                        <h:panelGroup layout="block" id="div_next" class="div_bot_buttons div_button_bot_right">
+                            <h:commandButton id = "button_command_next" action="#{produseController.prodNext}" class="buttons_bot button_right" value="URMATOARELE #{produseController.pageSize} ►" rendered="#{produseController.hasNextPage}">
+                                <f:ajax execute = "button_command_next" render = "div_replaceable footer floating_info" onevent="function doThis(data) {
+                                        if (data.status === 'success') {
+                                        var script = document.createElement('script');
+                                        script.setAttribute('type', 'text/javascript');
+                                        script.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+                                        document.head.appendChild(script);
+                                        var script2 = document.createElement('script2');
+                                        script2.setAttribute('type', 'text/javascript');
+                                        script2.setAttribute('src', 'common.js');
+                                        document.head.appendChild(script2);
+                                        mainFunction();
+                                        }
+                                        }
+                                        "/>
+                            </h:commandButton>
+                        </h:panelGroup>
+
+                    </h:form>
+                </h:panelGroup>
+            </ui:insert>
+        </ui:define>
+    </ui:composition>
+
+</html>
+

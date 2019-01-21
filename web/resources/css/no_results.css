@@ -1,0 +1,6 @@
+#div_no_results {
+    background: var(--lightcolor);
+    text-align: center;
+    font-size: 2em;
+    color: var(--fillcolor);
+}

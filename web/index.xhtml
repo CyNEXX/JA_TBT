@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/main.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/clienti.css" rel="stylesheet" type="text/css" />
+        <link href="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" rel="script" type="text/javascript" />
+        <link href="./resources/js/common.js" rel="script" type="text/javascript" />
+
+
+    </h:head>
+
+    <ui:composition template="./templates/template.xhtml">
+
+        <ui:param name = "button_type" value ="clienti"/>
+        <ui:param name = "content_type" value ="div_content"/>
+        <ui:param name = "element_de_adaugat" value ="ADAUGA CLIENT"/>
+        <ui:param name = "browse_type" value ="form_main"/>
+        <ui:param name = "Title" value ="TBT - Clienti"/>
+
+        <ui:define name="fixed">
+            <ui:insert name="floater" >
+                <h:form id="add_search_form">
+                    <h:inputHidden id="add_type" class="class_add_type" value="client"/>
+                    <h:panelGroup layout="block" id="div_panel_cauta">
+                        <h:inputText id="search" value="#{indexController.search}" class="class_search"/>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" id="div_panel_icons">
+
+                        <h:panelGroup layout="block" id="div_cauta" class="class_div_fixed_icon">
+                            <h:commandButton id="buton_submit" action="#{indexController.displaySearch}" class="search_submit clienti_search">
+                                <f:ajax render="div_replaceable footer div_no_results" execute="add_search_form" onevent="function doThis(data) {
+                                        if (data.status === 'success') {
+                                        var script = document.createElement('script');
+                                        script.setAttribute('type', 'text/javascript');
+                                        script.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+                                        document.head.appendChild(script);
+                                        var script2 = document.createElement('script2');
+                                        script.setAttribute('type', 'text/javascript');
+                                        script.setAttribute('src', 'common.js');
+                                        document.head.appendChild(script2);
+                                        mainFunction();
+                                        }
+                                        }
+                                        "/>
+                            </h:commandButton>
+                        </h:panelGroup>
+
+                        <h:panelGroup layout="block" id="div_adauga" class="class_div_fixed_icon">
+                            <h:commandButton id="buton_adauga" class="fixed_icons class_addbtns clienti_add" action="#{indexController.adauga}"></h:commandButton>
+                        </h:panelGroup>
+                        <script type="text/javascript" src="./resources/js/common.js"></script>
+                        <h:outputStylesheet name="/css/floating_panel.css"/>
+                    </h:panelGroup>
+
+                </h:form>
+            </ui:insert>
+        </ui:define>
+
+        <ui:define name="top_nav">
+            <ui:insert name="top" >
+                <ui:include src="components/top.xhtml" />
+            </ui:insert>
+        </ui:define>
+
+        <ui:define name="content">
+            <h:panelGroup layout="block" id="div_content_main">
+                <h:outputStylesheet name="/css/clienti.css"/>
+                <h:form id="form_main" class="forms" rendered="#{indexController.hasResults}">
+                    <h:dataTable value="#{indexController.clientTitles}" var="item" class="tabledata" role="grid" rowClasses="tr_clienti_info" columnClasses="td_idclient,td_cifravanzari,td_nrvanzari,td_nrProduse,td_numeclient,td_prenumeclient,td_adresaclient,td_telefonclient,td_editareclient,td_vanzareclient,td_stergeclient,td_shadowerase">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="idClient"/>
+                            </f:facet>
+                            <h:inputHidden value="#{item.idClient}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="CifraVanzari"/>
+                            </f:facet>
+                            <h:inputHidden class="ih_cv" value="#{item.cifraVanzari}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="NrVanzari"/>
+                            </f:facet>
+                            <h:inputHidden class="ih_nv"  value="#{item.nrVanzari}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="NrProduse"/>
+                            </f:facet>
+                            <h:inputHidden class="ih_np" value="#{item.nrProduse}"/>
+                        </h:column>
+
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nume"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numeClient}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Prenume"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prenumeClient}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Adresa"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adresaClient}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Telefon"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefonClient}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value=" "/>
+                            </f:facet>
+                            <h:commandButton value="EDITARE" action="#{indexController.prepareView}" class="non_img_table_button edit_butns special_width c_mod"></h:commandButton>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header"> 
+                                <h:outputText value=" "/>
+                            </f:facet>
+                            <h:panelGroup layout="block" class="div_vanzare_span">
+                                <h:commandButton action="#{indexController.creazaVanzare}" class="non_img_table_button cart_butns"></h:commandButton>
+                            </h:panelGroup>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value=" "/>
+                            </f:facet>
+                            <h:commandButton value="STERGE" id="sterge_but" class="non_img_table_button sterge_butns special_width c_ers">
+                                <f:ajax execute = "sterge_but" render = "div_replaceable footer floating_info" onevent="function doThis(data) {
+                                        if (data.status === 'success') {
+                                        var script = document.createElement('script');
+                                        script.setAttribute('type', 'text/javascript');
+                                        script.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+                                        document.head.appendChild(script);
+                                        var script2 = document.createElement('script2');
+                                        script2.setAttribute('type', 'text/javascript');
+                                        script2.setAttribute('src', 'common.js');
+                                        document.head.appendChild(script2);
+                                        mainFunction();
+                                        }
+                                        }
+                                        "/>
+                            </h:commandButton>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value=" "/>
+                            </f:facet>
+                            <h:commandButton class="buttons_hidden_erase" style="display: none" actionListener="${indexController.stergeClient}">
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </h:panelGroup>
+        </ui:define>
+
+        <ui:define name="bot">
+            <ui:insert name="bot_nav" >
+                <h:panelGroup layout="block" id="footer" class="div_conf">
+                    <h:form id="form_bottom_nav" class="forms_bottom_nav">
+                        <h:panelGroup layout="block" id="div_previous" class="div_bot_buttons div_button_bot_left">
+                            <h:commandButton id = "button_command_prev" action="#{indexController.prodPrev}" class="buttons_bot button_left" value="◄ ANTERIORII #{indexController.pageSize}" rendered="#{indexController.hasPreviousPage}">
+                                <f:ajax execute = "button_command_prev" render = "div_replaceable footer floating_info" onevent="function doThis(data) {
+                                        if (data.status === 'success') {
+                                        var script = document.createElement('script');
+                                        script.setAttribute('type', 'text/javascript');
+                                        script.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+                                        document.head.appendChild(script);
+                                        var script2 = document.createElement('script2');
+                                        script.setAttribute('type', 'text/javascript');
+                                        script.setAttribute('src', 'common.js');
+                                        document.head.appendChild(script2);
+                                        mainFunction();
+                                        }
+                                        }
+                                        "/>
+                            </h:commandButton>
+                        </h:panelGroup>
+                        <h:panelGroup layout="block" id="div_next" class="div_bot_buttons div_button_bot_right">
+
+                            <h:commandButton id = "button_command_next" action="#{indexController.prodNext}" class="buttons_bot button_right noncos" value="URMATORII #{indexController.pageSize} ►" rendered="#{indexController.hasNextPage}">
+                                <f:ajax execute = "button_command_next" render = "div_replaceable footer floating_info" onevent="function doThis(data) {
+                                        if (data.status === 'success') {
+                                        var script = document.createElement('script');
+                                        script.setAttribute('type', 'text/javascript');
+                                        script.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+                                        document.head.appendChild(script);
+                                        var script2 = document.createElement('script2');
+                                        script.setAttribute('type', 'text/javascript');
+                                        script.setAttribute('src', 'common.js');
+                                        document.head.appendChild(script2);
+                                        mainFunction();
+                                        }
+                                        }
+                                        "/>
+                            </h:commandButton>
+                        </h:panelGroup>
+                    </h:form>
+                </h:panelGroup>
+            </ui:insert>
+        </ui:define> 
+    </ui:composition>
+
+</html>
+

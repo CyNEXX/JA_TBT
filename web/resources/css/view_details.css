@@ -1,0 +1,74 @@
+
+.samelabels {
+    width: 50%;
+    color: var(--fillcolor);
+    background: var(--lightcolor);
+    font-size: 1em;
+    text-align: left;
+}
+
+.divs_comentariu {
+    background: var(--darkercolor);
+}
+
+thead {
+    /*    display:contents;*/
+    white-space: nowrap;
+    border-style: solid none solid none;
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: var(--lightcolor);
+    border-width: 1px;
+    border-color: var(--darkercolor) var(--darkercolor) var(--other_font_color) var(--darkercolor);
+}
+
+
+
+tr:first-child th:nth-child(1) {
+    width: 5%;
+}
+
+tr:first-child th:nth-child(2) {
+    text-align: left;
+    width: 25%;
+}
+
+tr:first-child th:nth-child(3) {
+    width: 25%;
+    text-align: left;
+}
+
+tr:first-child th:nth-child(4) {
+    text-align: right;
+    padding-right: 1em;
+    width: 8%;
+}
+
+tr:first-child th:nth-child(5) {
+    text-align: right;
+    padding-right: 1em;
+    width: 11%;
+}
+
+tr:first-child th:nth-child(6) {
+    text-align: right;
+    padding-right: 2.5em;
+    padding-left: 1em;
+    width: 10%;
+}
+
+/*tr:first-child th:nth-child(6) > th {
+
+    padding-right: 4em;
+
+
+}*/
+
+tr:first-child th:nth-child(7) {
+    margin: 0;
+    width: 13.2%;
+    height: 2em;
+    white-space: nowrap;
+}
+
+

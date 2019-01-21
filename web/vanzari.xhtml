@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <ui:composition template="./templates/template.xhtml">
+        <ui:param name = "button_type" value ="vanzari"/>
+        <ui:param name = "content_type" value ="div_content"/>
+        <ui:param name = "Title" value ="TBT - Produse"/>
+
+        <ui:define name="fixed">
+            <ui:insert name="floater" >
+                <h:form id="add_search_form">
+                    <h:panelGroup layout="block" id="div_panel_icons">
+                        <h:inputHidden id="add_type" class="class_add_type" value="vanzari"/>
+                        <h:panelGroup layout="block" id="div_vanzari_adauga" class="class_div_fixed_icon class_div_fixed_icon_vanzari">
+                            <h:commandButton id="buton_adauga" class="buttons_adauga_vanzare vanzari_add" action="#{vanzariController.adauga}"></h:commandButton>
+                        </h:panelGroup>
+                        <script type="text/javascript" src="./resources/js/common.js"></script>
+                        <h:outputStylesheet name="/css/floating_panel.css"/>
+                    </h:panelGroup>
+                </h:form>
+            </ui:insert>
+        </ui:define>
+
+
+        <ui:define name="top_nav">
+            <ui:insert name="top" >
+                <ui:include src="components/top.xhtml" />
+            </ui:insert>
+        </ui:define>
+
+        <ui:define name="content">
+            <h:outputStylesheet name="/css/produse.css"/>
+            <h:form id="form_main_vanzari" class="forms tabel_vanzari">
+                <h:dataTable value="#{vanzariController.vanzariTitles}" var="item" class="tabledata vanzari_table_view" role="grid" rowClasses="tr_vanzari_info" columnClasses="td_idVanzare,td_idClient,td_numeClient,td_prenumeClient,td_totalProduse,td_totalSuma,td_detalii">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="idVanzare"/>
+                        </f:facet>
+                        <h:inputHidden value="#{item.idComanda}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="idClient"/>
+                        </f:facet>
+                        <h:inputHidden value="#{item.idClient}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="numeClient"/>
+                        </f:facet>
+                        <h:outputText value="#{item.numeClient}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="prenumeClient"/>
+                        </f:facet>
+                        <h:outputText value="#{item.prenumeClient}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="totalProduse"/>
+                        </f:facet>
+                        <h:outputText value="#{item.cantitateVanzare} produse"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="totalSuma"/>
+                        </f:facet>
+                        <h:outputText value="#{item.totalProdus} RON"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="detalii"/>
+                        </f:facet>
+                        <h:commandButton value="DETALII" action="#{vanzariController.getPaginaDetalii}" class="non_img_table_button edit_butns special_width button_detalii"></h:commandButton>
+                    </h:column>
+
+                </h:dataTable>
+            </h:form>
+        </ui:define>
+
+        <ui:define name="bot">
+            <ui:insert name="bot_nav" >
+                <h:panelGroup layout="block" id="footer" class="div_conf">
+                    <h:form id="form_bottom_nav" class="forms_bottom_nav">
+                        <h:panelGroup layout="block" id="div_previous" class="div_bot_buttons div_button_bot_left">
+                            <h:commandButton id = "button_command_prev" action="#{vanzariController.vanzPrev}" class="buttons_bot button_left" value="◄ ANTERIOARELE #{vanzariController.pageSize}" rendered="#{vanzariController.hasPreviousPage}">
+                                <f:ajax execute = "button_command_prev" render = "div_replaceable footer floating_info" onevent="function doThis(data) {
+                                        if (data.status === 'success') {
+                                        var script = document.createElement('script');
+                                        script.setAttribute('type', 'text/javascript');
+                                        script.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+                                        document.head.appendChild(script);
+                                        var script2 = document.createElement('script2');
+                                        script2.setAttribute('type', 'text/javascript');
+                                        script2.setAttribute('src', 'common.js');
+                                        document.head.appendChild(script2);
+                                        mainFunction();
+                                        }
+                                        }
+                                        "/>
+                            </h:commandButton>
+                        </h:panelGroup>
+                        <h:panelGroup layout="block" id="div_next" class="div_bot_buttons div_button_bot_right">
+                            <h:commandButton id = "button_command_next" action="#{vanzariController.vanzNext}" class="buttons_bot button_right noncos" value="URMATOARELE #{vanzariController.pageSize} ►" rendered="#{vanzariController.hasNextPage}">
+                                <f:ajax execute = "button_command_next" render = "div_replaceable footer floating_info" onevent="function doThis(data) {
+                                        if (data.status === 'success') {
+                                        var script = document.createElement('script');
+                                        script.setAttribute('type', 'text/javascript');
+                                        script.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+                                        document.head.appendChild(script);
+                                        var script2 = document.createElement('script2');
+                                        script2.setAttribute('type', 'text/javascript');
+                                        script2.setAttribute('src', 'common.js');
+                                        document.head.appendChild(script2);
+                                        mainFunction();
+                                        }
+                                        }
+                                        "/>
+                            </h:commandButton>
+                        </h:panelGroup>
+                    </h:form>
+                </h:panelGroup>
+            </ui:insert>
+        </ui:define>
+
+        <ui:define name="floating_info">
+            <ui:insert name="fixed_info" >
+                <ui:include src="components/floating_info.xhtml" />
+            </ui:insert>
+        </ui:define>
+
+
+    </ui:composition>
+
+</html>
+

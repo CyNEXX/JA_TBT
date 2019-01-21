@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <ui:composition>
+
+
+
+            <fieldset>
+                <h:panelGroup layout="block"  id="div_nume" class="div_content">  
+                    <h:outputText class="labels padding_info" value="Nume:"/>
+                    <h:outputText id="nume" value="#{infoClientController.getNc()}" class="inputs padding_info input_good ${editable}" title="Nume"></h:outputText>
+                </h:panelGroup>  
+                <h:panelGroup layout="block"  id="div_prenume" class="div_content">  
+                    <h:outputText class="labels padding_info" value="Prenume: "/>
+                    <h:outputText id="prenume" value="#{infoClientController.getPc()}" class="inputs padding_info input_good ${editable}" title="Prenume"></h:outputText>
+                </h:panelGroup>
+                <h:panelGroup layout="block"  id="div_telefon" class="div_content">  
+                    <h:outputText class="labels padding_info" value="Nr. telefon: "/>
+                    <h:outputText id="telefon" value="#{infoClientController.getTc()}" class="inputs padding_info input_good ${editable}" title="Telefon"></h:outputText>
+                </h:panelGroup>
+                <h:panelGroup layout="block"  id="div_adresa" class="div_content">  
+                    <h:outputText class="labels padding_info" value="Adresa: "/>
+                    <h:outputText id="adresa" value="#{infoClientController.getAc()}" class="inputs padding_info input_good ${editable}" title="Adresa"></h:outputText>
+                </h:panelGroup>
+                
+                <h:panelGroup layout="block"  id="div_nrvanzari" class="div_content">  
+                    <h:outputText class="labels padding_info" value="Nr. vanzari: "/>
+                    <h:outputText id="nrvanzari" value="#{infoClientController.getNv()}" class="inputs padding_info input_good ${editable}" title="Nr. vanzari efectuate"></h:outputText>
+                </h:panelGroup>
+                <h:panelGroup layout="block"  id="div_nrproduse" class="div_content">  
+                    <h:outputText class="labels padding_info" value="Nr. produse: "/>
+                    <h:outputText id="nrproduse" value="#{infoClientController.getNp()}" class="inputs padding_info input_good ${editable}" title="Nr. produse achizitionate"></h:outputText>
+                </h:panelGroup>
+                <h:panelGroup layout="block"  id="div_cifravanzari" class="div_content">  
+                    <h:outputText class="labels padding_info" value="Total vanzari: "/>
+                    <h:outputText id="cifravanzari" value="#{infoClientController.getCv()}" class="inputs padding_info input_good ${editable}" title="Total vanzari in valoare de:"></h:outputText>
+                </h:panelGroup>
+            </fieldset>
+
+
+             <script type="text/javascript" src="./resources/js/common_add.js"></script>
+        </ui:composition>
+    </body>
+</html>

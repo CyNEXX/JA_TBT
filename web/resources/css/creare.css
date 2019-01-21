@@ -1,0 +1,489 @@
+:root{
+    --darkcolor :#7491AD;
+    --lightcolor: #96ADC8;
+    --bkcolor: #FFFCFF;
+    --focusrowcolor: #F2F8FF;
+    --evenrowcolor: #FFFCFF;
+    --unevenrowcolor: #F2F8FF;
+    --redcolor: #894A4A;
+    --fillcolor: #4D4D4D;
+    --darkercolor: #BEC8CE;
+    --bluishcolor: #D0E2ED;
+    --other_font_color: #2E556D;
+}
+
+@font-face {
+    font-family: "Kartika";
+    src: url('../fonts/kartika.ttf');
+}
+
+body {
+    background-color: var(--unevenrowcolor);
+
+    font-family: Kartika;
+}
+
+#logo {
+    display: block;
+    margin-left: auto;
+    margin-right:auto;
+    margin-top: 2em;
+    margin-bottom: 3em;
+    width: 50%;
+    height: 50%;
+}
+
+a:link {
+    text-decoration: none;
+    color: var(--bkcolor);
+}
+
+a:visited {
+    text-decoration: none;
+    color: var(--bkcolor);
+}
+
+a:hover {
+    text-decoration: none;
+    color: var(--bkcolor);
+}
+
+a:active {
+    text-decoration: none;
+    color: var(--bkcolor);
+}
+
+#div_maincontainer {
+    margin: auto;
+    width: 60em;
+}
+
+#add_title{
+    color: var(--fillcolor);
+    text-align: center;
+    background: var(--darkercolor);
+    margin: 0;
+    height: 2em;
+    vertical-align: middle;
+    padding: 0;
+    line-height: 2em;
+}
+
+fieldset {
+    background-color: var(--lightcolor);
+    border-style: none;
+    border-color: var(--lightcolor);
+    margin: 0;
+    padding: 0;
+}
+
+#j_idt16\3a div_add_type {
+    background: var(--fillcolor);
+    border-radius: 0 0 1em 1em;
+    border-style: none none none none;
+    border-color: var(--fillcolor);
+}
+
+#j_idt16\3a div_info {
+    margin: 0;
+    background: var(--lightcolor);
+    line-height: 2em;
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
+
+}
+
+* .inputs {
+    /*    padding: 0;*/
+    border: none;
+    font: 600 13.3333px Arial;
+    font-size: 1em;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1em;
+    width: 50%;
+    /*    color: var(--fillcolor);*/
+    background: var(--bluishcolor);
+}
+
+
+
+.labels {
+    width: 50%;
+    color: var(--bkcolor);
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+}
+
+.inputs_numeclient, .inputs_prenumeclient, .inputs_telefonclient, .inputs_adresaclient {
+    outline: none;
+}
+
+.inputs input{
+    outline: none;
+    background: var(--bluishcolor);
+}
+
+.div_content {
+    margin: 0;
+    display:flex;
+    justify-content: space-between;
+}
+
+#div_descriere {
+    height: 5em;
+}
+
+.inputs_adresaclient {
+    padding: 0;
+    border: none;
+    font: 600 13.3333px Arial;
+    font-size: 1em;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1em;
+    padding-top: 1em;
+
+}
+
+
+.forms_bottom_nav{height: 3.2em;}
+
+#mainList {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background: var(--darkcolor);
+    color: var(--fillcolor);
+    height: 16em;}
+
+.divs_items {
+    width: 19%;
+    height: 50%;
+    text-align: center;
+    line-height: 2em;
+}
+
+.divs_items:hover * {
+    background: var(--fillcolor);
+    color: var(--bkcolor);
+}
+
+.divs_items:hover .divs_nume, .divs_items:hover .divs_nume>* {
+    background: var(--fillcolor);
+    color: var(--bkcolor);
+    font-weight: 800;
+}
+
+.divs_items:hover .buttons_add {
+    background: var(--darkercolor);
+    color: var(--fillcolor);
+}
+
+.divs_items:hover .buttons_add:hover {
+    background: var(--focusrowcolor);
+    color: var(--fillcolor);
+}
+
+.buttons_add{
+    background: var(--darkercolor);
+    border: none;
+    width: 100%;
+    border-radius: 0 0 1em 1em;
+    padding: 0;
+    margin: 0;
+}
+
+.outputs_produse {
+    font-size: 1em;
+}
+
+.outputs_PRET {
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+.divs_nume {
+    font-size: 0.9em;
+    background: var(--fillcolor);
+    border-radius: 1em 1em 0 0;
+    vertical-align: middle;
+    color: var(--bkcolor);
+}
+
+.divs_items:hover{
+    background: var(--lightcolor);
+}
+
+.divs_items:hover .divs_stoc *, .divs_items:hover .divs_pret *{
+
+    background: var(--fillcolor);
+    color: var(--lightcolor);
+}
+
+#form_prev {
+    height: 100%;
+}
+
+.forms_nav {
+    width: 4%;
+    background: var(--lightcolor);
+}
+
+.buttons_nav_side {
+    width: 80%;
+    height: 100%;
+    border: none;
+    background: var(--fillcolor);
+    margin: 0;
+    padding: 0;
+    font-size: 2em;
+    color: var(--darkercolor);
+}
+
+.buttons_nav_side:hover {
+    background: var(--darkcolor);
+    color: var(--bkcolor);
+}
+
+#div_main_repeat {
+    display: flex;
+    width: 92%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background: var(--lightcolor);
+}
+
+.forms_per_item {
+    background: var(--lightcolor);
+    border-radius: 1em 1em 1em 1em;
+    height: 100%;
+}
+
+.div_minicontents {
+    height: 25%;
+}
+
+.divs_items:nth-child(1), .divs_items:nth-child(2), .divs_items:nth-child(3), .divs_items:nth-child(4), .divs_items:nth-child(5) {
+    padding-top: 0;
+}
+
+.divs_items:nth-child(6), .divs_items:nth-child(7), .divs_items:nth-child(8), .divs_items:nth-child(9), .divs_items:nth-child(10) {
+    margin-top: 0.5%;
+}
+
+#form_prev\3a button_prev_prod{
+    float:left;
+    border-radius: 0 0.5em 0.5em 0;
+}
+
+#form_next\3a button_next_prod {
+    float: right;
+    border-radius: 0.5em 0 0 0.5em;
+}
+
+.tabledata {    
+    background: var(--darkercolor);
+    font-size: 0.75em;
+}
+
+
+/*#blank_row {
+    height: 0.5em;
+    background: var(--lightcolor);
+    display: none;
+}*/
+
+.buttons_erase_row {
+    background: var(--fillcolor);
+    color: var(--darkercolor);
+    font-family: Kartika;
+    height: 100%;
+    width: 100%;
+    border: none;
+}
+
+.inputs_stocdorit{
+    border-style: none solid none solid;
+    border-color: var(--other_font_color);
+    width: 80%;
+    height: 100%;
+    background: var(--darkercolor);
+    text-align: center;
+    outline: none;
+    border-width: 1px;
+}
+
+.tds_idprodus{
+    width: 5%;
+}
+
+.tds_numeprodus, .tds_descriereprodus {
+    text-align: left;
+    width: 25%;
+}
+
+
+tbody tr:hover>.tds_sterge {
+    background: var(--unevenrowcolor);
+}
+
+.tds_pretprodus {
+    text-align: right;
+    padding-right: 1em;
+    width: 11%;
+}
+
+.tds_stocprodus {
+    text-align: right;
+    padding-right: 1em;
+    width: 8%;
+}
+
+.tds_stocdorit {
+    text-align: right;
+    padding-right: 1em;
+    width: 5%;
+}
+
+.tds_descriereprodus {
+    width: 25%;
+}
+
+.tds_sterge {
+    width: 15%;
+}
+
+.buttons_erase_row:hover {
+    background: var(--redcolor);
+    color: var(--bkcolor);
+}
+
+#div_comentariu {
+    background-color: var(--lightcolor);
+    border-style: none;
+    border-color: var(--lightcolor);
+    margin: 0;
+    padding: 0;
+}
+
+#div_comentariu_edit {
+    background-color: var(--darkercolor);
+    border-style: none;
+    border-color: var(--lightcolor);
+    margin: 0;
+    padding: 0;
+}
+
+.divs_comentariu {
+    background-color: var(--darkercolor);
+    border: 1px;
+    border-style: solid;
+    border-color: var(--other_font_color);
+    height: 3.2em;
+}
+
+.inputs_comentariu {
+    background: var(--bluishcolor);
+}
+
+.class_comentariu {
+    color: var(--other_font_color);
+    margin: 0;
+    padding: 1em;
+}
+
+tr:first-child > td.tds_stocdorit > input {    
+    border-style: none solid none solid;
+}
+
+tr:last-child > td.tds_stocdorit > input {    
+    border-style: none solid solid solid;
+}
+
+tr:only-child > td.tds_stocdorit > input {    
+    border-style: none solid solid solid;
+}
+
+tr {
+    background: var(--darkcolor);
+}
+
+.padding_info {
+    margin: 0;
+    padding: 0.6em;
+    text-align: left;
+    background: var(--lightcolor);
+}
+
+::placeholder {
+    color: var(--darkcolor);
+}
+
+.isEditable {
+    background: var(--darkercolor);
+}
+
+.isNotEditable {
+    background: var(--lightcolor);
+}
+
+.divs_total_dc {
+    line-height: 2em;
+    display: flex;
+    justify-content: flex-end;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--other_font_color);
+    height: 2em;
+    background: var(--darkcolor);
+    color: var(--bkcolor);
+}
+
+.totals {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.outputs_total {
+    padding-right: 6em;
+}
+
+.outputs_stocdorit{
+    background: inherit;
+}
+
+.div_bad_input {
+    border-color: var(--redcolor);
+    color: var(--redcolor);
+}
+
+.div_good_input {
+    color: var(--fillcolor);
+    border-color: var(--fillcolor);
+}
+
+.input_bad {
+    border-style: solid;
+    border-color: var(--redcolor);
+    color:  var(--redcolor);
+}
+
+.input_good {
+    border: none;
+    color: var(--fillcolor);
+}
+
+.stoc_gresit {
+    border-style: solid;
+    border-color: var(--redcolor);
+    color: var(--redcolor);
+}
+
+tbody tr.tr_vanzare, thead *{
+    background: var(--darkcolor);
+}
+
+
+

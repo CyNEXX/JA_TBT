@@ -1,0 +1,168 @@
+.tabledata {
+    table-layout: fixed;
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+    margin: auto;
+    vertical-align: middle;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+.jsfcrud_odd_row{
+
+}
+
+thead {
+    display:none;
+}
+
+.jsfcrud_even_row{
+
+}
+
+td { 
+    padding: 0;
+    margin: 0;
+    width: 15.5%;
+    height: 2em;
+}
+
+tr{ 
+    background: var(--lightcolor);
+    height: 2em;
+    color: var(--bkcolor);
+}
+
+tr:hover > td:nth-child(1), tr:hover > td:nth-child(2), tr:hover > td:nth-child(3), tr:hover > td:nth-child(4), tr:hover > td:nth-child(5), tr:hover > td:nth-child(6), tr:hover > td:nth-child(7), tr:hover > td:nth-child(8) { 
+    color: var(--fillcolor);
+    background: var(--unevenrowcolor);
+}
+
+.td_stergeclient {
+    width: 14%;
+    background: var(--unevenrowcolor);
+}
+
+.edit_butns{
+    background-size: auto;
+    width: 40%;
+    border-radius: 0;
+}
+
+.edit_butns:hover {
+    background: var(--fillcolor);
+    color: var(--bkcolor);
+}
+
+
+#div_vanzare_span {
+    visibility: hidden;
+    width: 100%;
+    height: 2em;
+}
+
+#buton_vanzare {
+    width: 100%;
+}
+
+.div_vanzare_span {
+    height: 2em;
+}
+
+.sterge_butns:hover{
+    background: var(--redcolor);
+    color: var(--bkcolor);
+}
+
+.non_img_table_button {
+    font-family: Kartika;
+    color: var(--fillcolor);
+    background: var(--lightcolor);
+    height: 100%;
+    font-weight: bold;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sterge_butns {
+    color: var(--redcolor);
+}
+
+
+
+
+
+.td_editareclient {
+    width: 12.5%;
+    background: var(--unevenrowcolor);
+}
+
+.td_vanzareclient {
+
+    border: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: url("../graphic/cart.svg");
+    width: auto;
+}
+
+.special_width {
+    width: 100%;
+}
+
+.cart_butns {
+    width: 100%;
+    border: none;
+    height: 2.4em;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background: url("../graphic/cart2.svg");
+}
+
+.cart_butns:hover {
+    background: url("../graphic/cart.svg");
+}
+
+
+.td_idclient {
+    width: 1%;
+}
+
+.td_numeclient, .td_prenumeclient, .td_telefonclient, .td_adresaclient  {
+    width: 16.5%;
+    text-align: left;
+    padding-left: 1em;
+}
+
+.td_prenumeclient, .td_adresaclient {
+    text-align: left;
+}
+
+.td_adresaclient {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.td_produse_comandate, .td_vanzari_efectuate, .td_cifra_vanzari {width: 0;}
+
+.td_cifravanzari, .td_nrvanzari, .td_nrProduse {
+    width: 0%;
+}
+
+.buttons_vanz{
+    background: var(--fillcolor);
+    padding: 0;
+    margin: 0;
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+
+.td_vanzari{
+    background: var(--lightcolor);
+}

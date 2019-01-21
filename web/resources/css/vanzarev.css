@@ -1,0 +1,139 @@
+.tabledata {
+    table-layout: fixed;
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+    margin: auto;
+    vertical-align: middle;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+.jsfcrud_odd_row{
+
+}
+
+thead {
+    display:none;
+}
+
+.jsfcrud_even_row{
+
+}
+
+td { 
+    padding: 0;
+    margin: 0;
+    width: 15.5%;
+    height: 2em;
+}
+
+tr{ 
+    background: var(--darkercolor);
+    height: 2em;
+    color: var(--fillcolor);
+}
+
+tr:hover { 
+    color: var(--fillcolor);
+    background: var(--unevenrowcolor);
+}
+
+
+#div_vanzare_span {
+    visibility: hidden;
+    width: 100%;
+    height: 2em;
+}
+
+#buton_vanzare {
+    width: 100%;
+}
+
+.div_vanzare_span {
+    height: 2em;
+}
+
+
+.non_img_table_button {
+    font-family: Kartika;
+    color: var(--fillcolor);
+    background: var(--lightcolor);
+    height: 100%;
+    font-weight: bold;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/*.td_vanzareclient {
+
+    border: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: url("../graphic/cart.svg");
+    width: auto;
+}*/
+
+.special_width {
+    width: 100%;
+}
+
+
+.td_idclient {
+    width: 0;
+}
+
+.td_numeclient, .td_prenumeclient, .td_telefonclient, .td_adresaclient  {
+    width: 16.5%;
+    text-align: left;
+}
+
+.td_prenumeclient, .td_adresaclient {
+    text-align: left;
+}
+
+.td_produse_comandate, .td_vanzari_efectuate, .td_cifra_vanzari {width: 0;}
+
+.td_cifravanzari, .td_nrvanzari, .td_nrProduse {
+    width: 0%;
+}
+
+.buttons_vanz{
+    background: inherit;
+    padding: 0;
+    margin: 0;
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+
+.buttons_vanz:hover{
+    background: inherit;
+    padding: 0;
+    margin: 0;
+    border: none;
+    height: 100%;
+    width: 100%;
+    
+    color: var(--unevenrowcolor);
+    background: var(--darkcolor);
+}
+
+
+tr:nth-child(1), tr:nth-child(2), tr:nth-child(3), tr:nth-child(4) {
+    width: 0;
+}
+
+/*.td_vanzari{
+    background: var(--lightcolor);
+}
+
+tr.tr_clienti_info:hover *{
+    background: var(--darkercolor);
+    color: var(--fillcolor);
+}*/

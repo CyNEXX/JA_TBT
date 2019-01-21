@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <!--  xmlns:compsite="http://java.sun.com/jsf/composite/custom"> -->
+
+
+
+
+    <ui:composition template="./templates/template_vanzare.xhtml">
+        <ui:param name = "button_type" value ="vanzari"/>
+        <ui:param name="element_de_adaugat" value="DETALII VANZARE"></ui:param>
+        <ui:param name = "content_type" value ="div_info"/>
+        <ui:param name = "browse_type" value ="produse"/>
+        <ui:param name = "Title" value = "TBT - Detalii cos"/>
+        <ui:param name = "editable" value = "isNotEditable"/>
+
+        <ui:define name="top_nav">
+            <ui:insert name="top" >
+                <ui:include src="components/top.xhtml" />
+            </ui:insert>
+        </ui:define>
+
+        <ui:define name="add_title">
+            <ui:insert name="title" >
+                <ui:include src="components/add_title.xhtml" />
+            </ui:insert>
+        </ui:define>
+
+        <ui:define name="info_table">
+            <ui:insert name="detalii_cl" >
+                <ui:include src="components/info_table.xhtml" />
+            </ui:insert>
+
+        </ui:define>
+
+        <ui:define name="lista_produse">
+            <h:outputStylesheet name="/css/cos.css"/>
+            <div id="cosList">
+
+                <h:form id="form_cos" class="forms">
+                    <h:dataTable value="#{vanzariController.listDMCos}" var="item" class="tabledata" role="grid" rowClasses="tr_vanzare" columnClasses="tds_idprodus,tds_numeprodus,tds_descriereprodus,tds_stocprodus,tds_pretprodus,tds_stocdorit,tds_pret_item,tds_sterge ">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="idP" class="head_idprodus"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idProdus}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nume Produs" class="head_numeprodus"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numeProdus}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Descriere" class="head_descriereprodus"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descriereProdus}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Stoc" class="head_stocprodus"/>
+                            </f:facet>
+                            <h:outputText value="#{item.stocProdus} in stoc"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Pret unitar" class="head_pretprodus"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pret} RON"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cantitate" class="head_stocdorit"/>
+                            </f:facet>
+                            <h:inputText class="inputs_stocdorit" value="#{item.stocDorit}">
+                                <f:validator validatorId="stocValidator"/>
+                            </h:inputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Pret item" class="head_pret_item"/>
+                            </f:facet>
+                            <h:outputText class="outputs_pret_total" value="#{item.pret}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value=" "/>
+                            </f:facet>
+
+                            <h:commandButton value="X" id="rem_button" class="buttons_erase_row" action="#{vanzariController.stergeDinCos}">
+                                <f:ajax execute = "rem_button" render = "cosList form_cos div_confirmare" onevent="function doThis(data) {
+                                        if (data.status === 'success') {
+                                        var script = document.createElement('script');
+                                        script.setAttribute('type', 'text/javascript');
+                                        script.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+                                        document.head.appendChild(script);
+                                        var script2 = document.createElement('script');
+                                        script2.setAttribute('type', 'text/javascript');
+                                        script2.setAttribute('src', 'common_add.js');
+                                        document.head.appendChild(script2);
+                                        mainFunction();
+                                        }
+                                        }
+                                        "/>
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+
+                    <div id="blank_row" class="big_row"></div>
+
+                    <h:panelGroup layout="block" id="div_total_dc" class="divs_total_dc">
+                        <h:outputText id="output_total_text" value="Total:" class="outputs_total_text totals"/>
+                        <h:outputText id="output_total" value="" class="outputs_total totals"/>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" id="div_confirmare" class="div_conf">
+                        <h:panelGroup layout="block" class="forms_bottom_nav">
+                            <h:panelGroup layout="block" id="div_previous" class="div_bot_buttons div_button_bot_left">
+                                <h:commandButton id="anuleaza" action="#{vanzariController.maiAdauga}" class="buttons_bot button_left" immediate="true" value="◄ ANULARE"></h:commandButton>
+                            </h:panelGroup>
+
+                            <h:panelGroup layout="block" id="div_next" class="div_bot_buttons div_button_bot_right">
+                                <h:commandButton id="accept" action="#{vanzariController.saveInfo}" class="buttons_bot button_right button_confirmare_vanzare noncos" value="CONFIRMARE ►"></h:commandButton>
+                            </h:panelGroup>
+                        </h:panelGroup>
+                    </h:panelGroup>
+                </h:form>
+            </div>
+
+            <script type="text/javascript" src="./resources/js/common_add.js"></script>
+        </ui:define>
+
+
+    </ui:composition>
+
+</html>
+

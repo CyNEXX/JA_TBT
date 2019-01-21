@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      >
+    <body>
+        <ui:composition>
+
+            <h:form id="add_search_form">
+                <h:inputHidden id="add_type" class="class_add_type" value="${indexController.addbutton_type}"/>
+                <h:panelGroup layout="block" id="div_panel_cauta">
+                    <ui:insert name="insert_form_search">SEARCH FORM</ui:insert>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" id="div_panel_icons">
+
+                    <h:panelGroup layout="block" id="div_cauta" class="class_div_fixed_icon">
+                        <ui:insert name="cauta_button">SEARCH BUTTON</ui:insert>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" id="div_adauga" class="class_div_fixed_icon">
+                        <ui:insert name="add_button">ADD BUTTON</ui:insert>
+                    </h:panelGroup>
+
+                </h:panelGroup>
+
+            </h:form>
+            <script type="text/javascript" src="./resources/js/common.js"></script>
+<!--            <h:outputScript library="js" name="common.js" />-->
+
+        </ui:composition>
+    </body>
+</html>

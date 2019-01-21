@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:body>
+        <ui:composition>
+            <h:panelGroup layout="block">
+                <img id="logo" src="./resources/graphic/logo.svg" alt="" />
+            </h:panelGroup>
+
+            <h:panelGroup layout="block" id="nav">
+                <h:form id="top_form">
+                    <h:panelGroup layout="block" id="div_clienti" class="divs_clienti div_top_buttons #{button_type == 'clienti' ? 'active_div' : 'inactive_div'}">
+                        <h:commandButton action="#{topController.getPaginaClienti}" value="CLIENTI" class="buttons_top button_clienti #{button_type == 'clienti' ? 'active_button_page' : 'inactive_button_page'}"/>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" id="div_produse" class="divs_produse div_top_buttons #{button_type == 'produse' ? 'active_div' : 'inactive_div'}">
+                        <h:commandButton action="#{topController.getPaginaProduse}" value="PRODUSE" class="buttons_top button_produse #{button_type == 'produse' ? 'active_button_page' : 'inactive_button_page'}"/>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" id="div_vanzari" class="divs_vanzari div_top_buttons #{button_type == 'vanzari' ? 'active_div' : 'inactive_div'}">
+                        <h:commandButton action="#{topController.getPaginaVanzari}" value="VANZARI" class="buttons_top button_vanzari #{button_type == 'vanzari' ? 'active_button_page' : 'inactive_button_page'}"/>
+                    </h:panelGroup>
+                </h:form>
+            </h:panelGroup>
+        </ui:composition>
+
+    </h:body>
+
+</html>

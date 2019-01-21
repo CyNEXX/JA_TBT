@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+
+
+    <ui:composition template="./templates/template_add.xhtml">
+        <ui:param name = "button_type" value = "clienti"/>
+        <ui:param name = "element_de_adaugat" value = "ADAUGA CLIENT"></ui:param>
+        <ui:param name = "content_type" value = "div_info"/>
+        <ui:param name = "Title" value = "TBT - Adauga client"/>
+        <ui:param name = "editable" value = "isEditable"/>
+
+
+        <ui:define name="top_nav">
+            <ui:insert name="top" >
+                <ui:include src="components/top.xhtml" />
+            </ui:insert>
+        </ui:define>
+
+        <ui:define name="add_title">
+            <ui:insert name="title" >
+                <ui:include src="components/add_title.xhtml" />
+            </ui:insert>
+        </ui:define>
+
+        <ui:define name="info_table">
+            <h:form>
+                <fieldset>
+                    <h:panelGroup layout="block"  id="div_info">
+                        <h:panelGroup layout="block"  id="div_nume" class="div_content divs_numeC">  
+                            <h:outputText class="labels padding_info" value="Nume:"/>
+                            <h:inputText id="nume" value="#{indexController.staticNume}" class="inputs padding_info inputs_numeclient isEditable input_good">
+                                <f:validator validatorId="numeValidator"/>
+                            </h:inputText>
+                        </h:panelGroup>  
+                        <h:panelGroup layout="block"  id="div_prenume" class="div_content divs_prenumeC">  
+                            <label for="prenume" class="labels padding_info">Prenume: </label>
+                            <h:inputText id="prenume" value="#{indexController.staticPrenume}" class="inputs padding_info inputs_prenumeclient isEditable input_good">
+                                <f:validator validatorId="numeValidator"/>
+                            </h:inputText>
+                        </h:panelGroup>
+                        <h:panelGroup layout="block"  id="div_telefon" class="div_content divs_telefonC">  
+                            <label for="telefon" class="labels padding_info">Nr. telefon: </label>
+                            <h:inputText id="telefon" value="#{indexController.staticTelefon}" class="inputs padding_info inputs_telefonclient isEditable input_good">
+                                <f:validator validatorId="telValidator"/>
+                            </h:inputText>
+                        </h:panelGroup>
+                        <h:panelGroup layout="block"  id="div_adresa" class="div_content divs_adresaC">  
+                            <label for="adresa" class="labels padding_info">Adresa: </label>
+                            <h:inputTextarea id="adresa" value="#{indexController.staticAdresa}" class="inputs padding_info inputs_adresaclient isEditable input_good">
+                                <f:validator validatorId="textValidator"/>
+                            </h:inputTextarea>
+                        </h:panelGroup>  
+
+                    </h:panelGroup>
+                </fieldset>
+
+                <h:panelGroup layout="block"  id="div_confirmare" class="divs_confirmare">
+                    <h:panelGroup layout="block" id="div_previous" class="div_bot_buttons div_button_bot_left">
+                        <h:commandButton id="anuleaza" action="${topController.getPaginaClienti}" class="buttons_bot button_left" immediate="true" value="◄ ANULARE"></h:commandButton>
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" id="div_next" class="div_bot_buttons div_button_bot_right">
+                        <h:commandButton id="accept" action="#{indexController.saveInfo}" class="buttons_bot button_right confirm_client noncos" value="CONFIRMARE ►"></h:commandButton>
+                    </h:panelGroup>
+                </h:panelGroup>
+            </h:form>
+
+            <ui:define name="add_button">
+                <ui:insert name="add" >
+                    <ui:include src="./add_button.xhtml" />
+                </ui:insert>
+            </ui:define>
+            <script type="text/javascript" src="./resources/js/client_operation.js"></script>
+        </ui:define>
+
+        <!--        <h:outputScript library="js" name="common.js" />-->
+
+    </ui:composition>
+
+</html>
+

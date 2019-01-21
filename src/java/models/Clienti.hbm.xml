@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 14, 2018 3:30:19 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="models.Clienti" table="clienti" catalog="tbtsimple" optimistic-lock="version">
+        <id name="idClient" type="java.lang.Integer">
+            <column name="id_client" />
+            <generator class="identity" />
+        </id>
+        <property name="prenumeClient" type="string">
+            <column name="prenume_client" length="45" not-null="true" />
+        </property>
+        <property name="numeClient" type="string">
+            <column name="nume_client" length="45" not-null="true" />
+        </property>
+        <property name="adresaClient" type="string">
+            <column name="adresa_client" length="45" not-null="true" />
+        </property>
+        <property name="telefonClient" type="string">
+            <column name="telefon_client" length="45" not-null="true" />
+        </property>
+        <property name="nrVanzari" type="java.lang.Integer">
+            <column name="nrVanzari" />
+        </property>
+        <property name="nrProduse" type="java.lang.Integer">
+            <column name="nrProduse" />
+        </property>
+        <property name="cifraVanzari" type="java.lang.Double">
+            <column name="cifraVanzari" precision="22" scale="0" />
+        </property>
+        <property name="clientActiv" type="java.lang.Byte">
+            <column name="client_activ" />
+        </property>
+        <set name="vanzaris" table="vanzari" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_client" not-null="true" />
+            </key>
+            <one-to-many class="models.Vanzari" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 14, 2018 3:30:19 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="models.Produse" table="produse" catalog="tbtsimple" optimistic-lock="version">
+        <id name="idProdus" type="java.lang.Integer">
+            <column name="id_produs" />
+            <generator class="identity" />
+        </id>
+        <property name="numeProdus" type="string">
+            <column name="nume_produs" length="45" not-null="true" />
+        </property>
+        <property name="descriereProdus" type="string">
+            <column name="descriere_produs" length="45" />
+        </property>
+        <property name="stocProdus" type="java.lang.Integer">
+            <column name="stoc_produs" />
+        </property>
+        <property name="pret" type="double">
+            <column name="pret" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="totalVandute" type="java.lang.Integer">
+            <column name="totalVandute" />
+        </property>
+        <property name="produsActiv" type="java.lang.Byte">
+            <column name="produs_activ" />
+        </property>
+        <set name="vanzaris" table="vanzari" inverse="true" lazy="true" fetch="join">
+            <key>
+                <column name="id_produs" not-null="true" />
+            </key>
+            <one-to-many class="models.Vanzari" />
+        </set>
+    </class>
+</hibernate-mapping>

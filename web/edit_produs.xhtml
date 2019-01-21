@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+
+    <ui:composition template="./templates/template_add.xhtml">
+        <ui:param name = "button_type" value ="produse"/>
+        <ui:param name="element_de_adaugat" value="EDITARE PRODUS"></ui:param>
+        <ui:param name = "content_type" value ="div_info"/>
+        <ui:param name = "Title" value = "TBT - Editare produs"/>
+
+
+
+
+        <ui:define name="top_nav">
+            <ui:insert name="top" >
+                <ui:include src="components/top.xhtml" />
+            </ui:insert>
+        </ui:define>
+
+        <ui:define name="info_table">
+            <h:form>
+                <fieldset>
+                    <h:panelGroup layout="block"  id="div_info">
+                        <h:panelGroup layout="block"  id="div_nume" class="div_content">  
+                            <h:outputText class="labels padding_info" value="Nume:"/>
+                            <h:inputText id="nume" value="#{produseController.staticNumeProdus}" class="inputs padding_info inputs_numeprodus isEditable input_good">
+                                <f:validator validatorId="numeValidator"/>
+                            </h:inputText>
+                        </h:panelGroup>  
+                        <h:panelGroup layout="block"  id="div_stoc" class="div_content">  
+                            <label for="stoc" class="labels padding_info">Stoc produs: </label>
+                            <h:inputText id="stoc" value="#{produseController.staticStocProdus}" class="inputs padding_info inputs_stocprodus isEditable input_good">
+                                <f:validateRegex pattern="${topController.getStoc_pattern()}" />
+                            </h:inputText>
+                        </h:panelGroup>
+                        <h:panelGroup layout="block"  id="div_pret" class="div_content">  
+                            <label for="pret" class="labels padding_info">Pret: </label>
+                            <h:inputText id="pret" value="#{produseController.staticPretProdus}" class="inputs padding_info inputs_pretprodus isEditable input_good">
+                                <f:validateRegex pattern="${topController.getPret_pattern()}" />
+                            </h:inputText>
+                        </h:panelGroup>  
+                        <h:panelGroup layout="block"  id="div_descriere" class="div_content">  
+                            <label for="descriere" class="labels padding_info">Descriere: </label>
+                            <h:inputTextarea id="descriere" value="#{produseController.staticDescriereProdus}" class="inputs inputs_adresaclient padding_info inputs_descriereprodus isEditable input_good">
+                                <f:validator validatorId="textValidator"/>
+                            </h:inputTextarea>
+                        </h:panelGroup>
+                    </h:panelGroup>
+                </fieldset>
+
+                <h:panelGroup layout="block"  id="div_confirmare" class="divs_confirmare">
+                    <h:panelGroup layout="block" id="div_previous" class="div_bot_buttons div_button_bot_left">
+                        <h:commandButton id="anuleaza" action="${topController.getPaginaProduse}" class="buttons_bot button_left" immediate="true" value="◄ ANULARE"></h:commandButton>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" id="div_next" class="div_bot_buttons div_button_bot_right">
+                        <h:commandButton id="accept" action="#{produseController.modificaInfo}" class="buttons_bot button_right confirm_produs noncos" value="CONFIRMARE ►"></h:commandButton>
+                    </h:panelGroup>
+                </h:panelGroup>
+
+
+
+            </h:form>
+        </ui:define>
+
+        <ui:define name="add_title">
+            <ui:insert name="title" >
+                <ui:include src="components/add_title.xhtml" />
+            </ui:insert>
+            <script type="text/javascript" src="./resources/js/produs_operation.js"></script>
+        </ui:define>
+
+
+    </ui:composition>
+
+</html>
+

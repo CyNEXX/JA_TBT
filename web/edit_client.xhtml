@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+
+    <ui:composition template="./templates/template_add.xhtml">
+        <ui:param name = "button_type" value = "clienti"/>
+        <ui:param name = "element_de_adaugat" value = "EDITARE CLIENT"></ui:param>
+        <ui:param name = "content_type" value = "div_info"/>
+        <ui:param name = "Title" value = "TBT - Editare client"/>
+
+
+
+        <ui:define name="top_nav">
+            <ui:insert name="top" >
+                <ui:include src="components/top.xhtml" />
+            </ui:insert>
+        </ui:define>
+
+        <ui:define name="info_table">
+            <h:form>
+                <fieldset>
+                    <h:panelGroup layout="block"  id="div_info">
+                        <h:panelGroup layout="block"  id="div_nume" class="div_content">  
+                            <h:outputText class="labels padding_info" value="Nume:"/>
+                            <h:inputText id="nume" value="#{indexController.staticNume}" class="inputs inputs_numeclient padding_info isEditable input_good" title="Nume">
+                                <f:validator validatorId="numeValidator"/>
+                            </h:inputText>
+                        </h:panelGroup>  
+                        <h:panelGroup layout="block"  id="div_prenume" class="div_content">  
+                            <h:outputText class="labels padding_info" value="Prenume: "/>
+                            <h:inputText id="prenume" value="#{indexController.staticPrenume}" class="inputs inputs_prenumeclient padding_info isEditable input_good" title="Prenume">
+                                <f:validator validatorId="numeValidator"/>
+                            </h:inputText>
+                        </h:panelGroup>
+                        <h:panelGroup layout="block"  id="div_telefon" class="div_content">  
+                            <h:outputText class="labels padding_info" value="Nr. telefon: "/>
+                            <h:inputText id="telefon" value="#{indexController.staticTelefon}" class="inputs inputs_telefonclient padding_info isEditable input_good" title="Telefon">
+                                <f:validator validatorId="telValidator"/>
+                            </h:inputText>
+                        </h:panelGroup>
+                        <h:panelGroup layout="block"  id="div_adresa" class="div_content">  
+                            <h:outputText class="labels padding_info" value="Adresa: "/>
+                            <h:inputTextarea id="adresa" value="#{indexController.staticAdresa}" class="inputs inputs_adresaclient padding_info isEditable input_good" title="Adresa">
+                                <f:validator validatorId="textValidator"/>
+                            </h:inputTextarea>
+                        </h:panelGroup>  
+                    </h:panelGroup>
+                </fieldset>
+
+
+                <h:panelGroup layout="block"  id="div_confirmare" class="divs_confirmare">
+                    <h:panelGroup layout="block" id="div_previous" class="div_bot_buttons div_button_bot_left">
+                        <h:commandButton id="anuleaza" action="${topController.getPaginaClienti}" class="buttons_bot button_left" immediate="true" value="◄ ANULARE"></h:commandButton>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" id="div_next" class="div_bot_buttons div_button_bot_right">
+                        <h:commandButton id="accept" action="#{indexController.modificaInfo}" class="buttons_bot button_right confirm_client noncos" value="CONFIRMARE ►"></h:commandButton>
+                    </h:panelGroup>
+                </h:panelGroup>
+            </h:form>
+        </ui:define>
+
+
+        <ui:define name="add_title">
+            <ui:insert name="title" >
+                <ui:include src="components/add_title.xhtml" />
+            </ui:insert>
+            <script type="text/javascript" src="./resources/js/client_operation.js"></script>
+        </ui:define>
+
+
+
+
+    </ui:composition>
+
+</html>
+
